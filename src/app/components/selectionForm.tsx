@@ -11,25 +11,25 @@ import {
 } from "@chakra-ui/react";
 
 interface FormProps {
-  onSubmit: (selections: Selections) => void;
+  handleFormSubmit: (selections: Selections) => void;
   selectedFilter: Selections;
   setSelectedFilter: Dispatch<SetStateAction<Selections>>;
 }
 
-interface Selections {
+export interface Selections {
   effort: string;
   cost: string;
   veggie: string;
 }
 
 function SelectionForm({
-  onSubmit,
+  handleFormSubmit,
   selectedFilter,
   setSelectedFilter,
 }: FormProps) {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    onSubmit(selectedFilter);
+    handleFormSubmit(selectedFilter);
   };
 
   return (

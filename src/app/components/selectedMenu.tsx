@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import { Dispatch, ReactNode, SetStateAction } from "react";
+import { Selections } from "./selectionForm";
 
 interface Recipe {
   name: string;
@@ -40,13 +41,15 @@ const SelectionText = ({
 interface SelectedMenuProps {
   recipe: Recipe;
   setSelectedRecipe: Dispatch<SetStateAction<Recipe | null>>;
-  onRandomize: () => void;
+  selectedFilter: Selections;
+  handleFormSubmit: (selections: Selections) => void;
 }
 
 function SelectedMenu({
   recipe,
   setSelectedRecipe,
-  onRandomize,
+  selectedFilter,
+  handleFormSubmit,
 }: SelectedMenuProps) {
   return (
     <Container maxW="container.md" centerContent p={8}>
@@ -82,18 +85,19 @@ function SelectedMenu({
               Einkaufsliste
             </Heading>
             <UnorderedList spacing={2}>
-              <Flex gap={8} flexDirection={{ base: "column", md: "row" }}>
-                {recipe.ingredients.map((ingredient, index) => (
-                  <ListItem key={index}>{ingredient}</ListItem>
-                ))}
-              </Flex>
+              {recipe.ingredients.map((ingredient, index) => (
+                <ListItem key={index}>{ingredient}</ListItem>
+              ))}
             </UnorderedList>
           </Box>
           <Flex justify="space-between" mt={4}>
             <Button onClick={() => setSelectedRecipe(null)} variant="outline">
               Zurück
             </Button>
-            <Button colorScheme="teal" onClick={onRandomize}>
+            <Button
+              colorScheme="teal"
+              onClick={() => handleFormSubmit(selectedFilter)}
+            >
               Randomize
             </Button>
           </Flex>
