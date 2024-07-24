@@ -1,0 +1,17 @@
+.reserve-card {
+  width: 600px;
+  height: 700px;
+}
+
+.reserve-card-mobile {
+  width: 320px;
+  height: 1050px;
+}
+
+.meal-title {
+  height: 80px;
+}
+
+.ingredent-list {
+  height: 250px;
+}

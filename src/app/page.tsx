@@ -25,8 +25,9 @@ export default function Home() {
       const isVeggieMatch =
         selections.veggie === "any" ||
         recipe.veggie === (selections.veggie === "yes");
+      const isSelectedRecipe = selectedRecipe?.name === recipe.name;
 
-      return isEffortMatch && isCostMatch && isVeggieMatch;
+      return isEffortMatch && isCostMatch && isVeggieMatch && !isSelectedRecipe;
     });
     const randomRecipe =
       filteredRecipes[Math.floor(Math.random() * filteredRecipes.length)];
